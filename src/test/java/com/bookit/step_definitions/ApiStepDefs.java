@@ -39,9 +39,20 @@ public class ApiStepDefs {
 
     @Then("status code should be {int}")
     public void status_code_should_be(int statusCode) {
-
+        //verify status code matches with the feature file expected status code
         Assert.assertEquals(statusCode,response.statusCode());
 
     }
 
+    @Then("the information about current user from api and database should match")
+    public void theInformationAboutCurrentUserFromApiAndDatabaseShouldMatch() {
+        System.out.println("we will compare database and api in this step");
+
+        //get information from database
+
+        //get information from api
+
+        //compare database vs api
+
+    }
 }
