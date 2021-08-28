@@ -123,4 +123,20 @@ public class ApiStepDefs {
         Assert.assertEquals(actualRole,actualUIRole);
 
     }
+
+    @When("I send POST request to {string} endpoint with following information")
+    public void i_send_POST_request_to_endpoint_with_following_information(String path, Map<String,String> studentInfo) {
+
+        System.out.println("studentInfo = " + studentInfo);
+
+        response = given().accept(ContentType.JSON)
+                .queryParams(studentInfo)
+                .and().header("Authorization",token)
+                .log().all()
+                .when()
+                .post(ConfigurationReader.get("qa2api.url") + path);
+
+
+    }
+
 }

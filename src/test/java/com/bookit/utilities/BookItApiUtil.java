@@ -22,4 +22,8 @@ public class BookItApiUtil {
 
         return  finalToken;
     }
+
+
+    //one method param role --> userType "student-member" "student-leader" "teacher"
+    //returns --> token
 }
