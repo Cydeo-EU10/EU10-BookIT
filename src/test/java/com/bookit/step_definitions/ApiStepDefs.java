@@ -134,9 +134,39 @@ public class ApiStepDefs {
                 .and().header("Authorization",token)
                 .log().all()
                 .when()
-                .post(ConfigurationReader.get("qa2api.url") + path);
+                .post(ConfigurationReader.get("qa2api.url") + path)
+        .then().log().all().extract().response();        ;
 
 
     }
+
+
+
+    @Then("I delete previously added student")
+    public void i_delete_previously_added_student(Map<String,String> studentInfo) {
+
+        //1.send a get request to get token with student information
+        String studentToken = BookItApiUtil.generateToken(studentInfo.get("email"),studentInfo.get("password"));
+
+        //2.send a get request to /api/users/me endpoint and get the id number
+        int idToDelete = given().accept(ContentType.JSON)
+                .and().header("Authorization", studentToken)
+                .when()
+                .get(ConfigurationReader.get("qa2api.url") + "/api/users/me")
+                .then().statusCode(200).extract().jsonPath().getInt("id");
+
+        //3.send a delete request as a teacher to /api/students/{id} endpoint to delete the student
+        String teacherToken =BookItApiUtil.generateToken(ConfigurationReader.get("teacher_email"),ConfigurationReader.get("teacher_password"));
+                    given().
+                            pathParam("id",idToDelete)
+                            .and().
+                            header("Authorization",teacherToken)
+                    .when()
+                            .delete(ConfigurationReader.get("qa2api.url")+"/api/students/{id}")
+                    .then()
+                            .statusCode(204);
+
+    }
+
 
 }

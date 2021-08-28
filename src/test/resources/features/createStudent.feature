@@ -6,10 +6,19 @@ Feature: Create student
     When I send POST request to "/api/students/student" endpoint with following information
       | first-name      | harold              |
       | last-name       | finch               |
-      | email           | harold2@gmail.com   |
+      | email           | harold4@gmail.com   |
       | password        | abc123              |
       | role            | student-team-leader |
       | campus-location | VA                  |
       | batch-number    | 8                   |
       | team-name       | Nukes               |
     Then status code should be 201
+    And I delete previously added student
+      | first-name      | harold              |
+      | last-name       | finch               |
+      | email           | harold4@gmail.com   |
+      | password        | abc123              |
+      | role            | student-team-leader |
+      | campus-location | VA                  |
+      | batch-number    | 8                   |
+      | team-name       | Nukes               |
