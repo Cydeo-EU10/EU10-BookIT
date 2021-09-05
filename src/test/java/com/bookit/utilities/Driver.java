@@ -76,7 +76,9 @@ public class Driver {
     }
 
     public static void closeDriver() {
+        if(driverPool.get() != null){
         driverPool.get().quit();
         driverPool.remove();
+        }
     }
 }

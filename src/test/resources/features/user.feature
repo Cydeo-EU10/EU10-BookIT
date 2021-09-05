@@ -13,7 +13,7 @@ Feature: User Verification
     When I get the current user information from api
     Then the information about current user from api and database should match
 
-  @db
+  @db @ui
   Scenario: three point verification (UI,API,Database)
     Given user logs in using "wcanadinea@ihg.com" "waverleycanadine"
     And  user is on the my self page
