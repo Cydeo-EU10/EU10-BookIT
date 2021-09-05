@@ -4,6 +4,7 @@ import com.bookit.pages.SelfPage;
 import com.bookit.utilities.BookItApiUtil;
 import com.bookit.utilities.ConfigurationReader;
 import com.bookit.utilities.DBUtils;
+import com.bookit.utilities.Environment;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -41,7 +42,7 @@ public class ApiStepDefs {
                 .and()
                 .header("Authorization", token)
                 .when()
-                .get(ConfigurationReader.get("qa2api.url") + "/api/users/me");
+                .get(Environment.BASE_URL + "/api/users/me");
 
     }
 
@@ -142,7 +143,7 @@ public class ApiStepDefs {
                 .and().header("Authorization",token)
                 .log().all()
                 .when()
-                .post(ConfigurationReader.get("qa2api.url") + path)
+                .post(Environment.BASE_URL + path)
         .then().log().all().extract().response();        ;
 
 
