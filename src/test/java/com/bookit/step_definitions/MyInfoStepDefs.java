@@ -34,5 +34,11 @@ public class MyInfoStepDefs {
 	}
 
 
-	
+	@Given("I get env properties")
+	public void iGetEnvProperties() {
+
+
+
+
+	}
 }
