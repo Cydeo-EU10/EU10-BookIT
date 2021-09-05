@@ -14,7 +14,8 @@ public class BookItApiUtil {
                 .queryParam("email", email)
                 .queryParam("password", password)
                 .when()
-                .get(Environment.BASE_URL + "/sign");
+                .get(Environment.BASE_URL + "/sign")
+                .then().log().all().extract().response();
 
         String token = response.path("accessToken");
 
@@ -47,8 +48,52 @@ public class BookItApiUtil {
                 .and().
                 header("Authorization",teacherToken)
                 .when()
-                .delete(ConfigurationReader.get("qa2api.url")+"/api/students/{id}")
+                .delete(Environment.BASE_URL+"/api/students/{id}")
                 .then()
                 .statusCode(204);
+    }
+
+    //teacher , student-member,student-leader
+    //it will take user info from conf.properties
+    public static String getTokenByRole(String role){
+        //switch,if make sure you get correct user info
+        //send request/get token/ return token
+        String email, pass;
+
+        switch (role) {
+
+            case "teacher":
+                email = Environment.TEACHER_EMAIL;
+                pass = Environment.TEACHER_PASSWORD;
+                break;
+            case "student-member":
+                email = Environment.MEMBER_EMAIL;
+                pass = Environment.MEMBER_PASSWORD;
+                break;
+
+            case "student-leader":
+                email = Environment.LEADER_EMAIL;
+                pass = Environment.LEADER_PASSWORD;
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + role);
+        }
+
+        String accessToken =
+                given()
+                        .accept(ContentType.JSON)
+                        .queryParams("email",email,"password",pass)
+                        .when()
+                        .get(Environment.BASE_URL+"/sign")
+                        .then()
+                        .statusCode(200)
+                        .extract().jsonPath().getString("accessToken");
+
+        System.out.println(role+":"+accessToken);
+        return "Bearer " + accessToken;
+
+
+
     }
 }

@@ -17,9 +17,9 @@ public class DBUtils {
      *
      */
     public static void createConnection() {
-        String url = ConfigurationReader.get("dbUrl");
-        String username = ConfigurationReader.get("dbUsername");
-        String password = ConfigurationReader.get("dbPassword");
+        String url = Environment.DB_URL;
+        String username = Environment.DB_USERNAME;
+        String password = Environment.DB_PASSWORD;
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
