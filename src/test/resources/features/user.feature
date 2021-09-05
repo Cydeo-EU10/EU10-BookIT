@@ -1,7 +1,7 @@
 @smoke
 Feature: User Verification
 
-  @wip
+
   Scenario: verify information about logged user
     Given I logged Bookit api using "wcanadinea@ihg.com" and "waverleycanadine"
     When I get the current user information from api
@@ -17,11 +17,11 @@ Feature: User Verification
   Scenario: three point verification (UI,API,Database)
     Given user logs in using "wcanadinea@ihg.com" "waverleycanadine"
     And  user is on the my self page
-    Given I logged Bookit api using "sbirdbj@fc2.com" and "asenorval"
+    Given I logged Bookit api using "wcanadinea@ihg.com" and "waverleycanadine"
     When I get the current user information from api
     Then UI,API and Database user information must be match
 
-   @db
+  @db
   Scenario Outline: three point verification (UI,API,Database) DDT
     Given user logs in using "<email>" "<password>"
     And  user is on the my self page
@@ -30,6 +30,6 @@ Feature: User Verification
     Then UI,API and Database user information must be match
 
     Examples:
-      | email                | password       |
-      | sbirdbj@fc2.com      | asenorval      |
-      | nshearsby7w@uiuc.edu | lorettebradnum |
+      | email              | password         |
+      | wcanadinea@ihg.com | waverleycanadine |
+      #| nshearsby7w@uiuc.edu | lorettebradnum |
