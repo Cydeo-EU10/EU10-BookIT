@@ -38,6 +38,8 @@ public class MyInfoStepDefs {
 
 		System.out.println(Environment.URL);
 		System.out.println(Environment.BASE_URL);
+		System.out.println(Environment.DB_USERNAME);
+		System.out.println(Environment.DB_PASSWORD);
 		System.out.println(Environment.DB_URL);
 
 		System.out.println(Environment.TEACHER_EMAIL);

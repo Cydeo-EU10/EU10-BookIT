@@ -18,9 +18,11 @@ public class Environment {
         public static final String LEADER_EMAIL;
         public static final String LEADER_PASSWORD;
 
-        static {
+    public static Properties properties;
 
-            Properties properties = null;
+
+    static {
+
             String environment = System.getProperty("environment") != null ? environment = System.getProperty("environment") : ConfigurationReader.get("environment");
             //String environment = ConfigurationReader.get("environment");
 
