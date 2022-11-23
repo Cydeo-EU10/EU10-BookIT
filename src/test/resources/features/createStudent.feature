@@ -15,7 +15,7 @@ Feature: Create student
     Then status code should be 201
     And I delete previously added student
 
-  @wip
+#  @wip
   Scenario: test config
     Given I get env properties
 
