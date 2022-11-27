@@ -1,13 +1,13 @@
 Feature: Create student
 
-
+  @wip
   Scenario: Create student a teacher and verify status code 201
     Given I logged Bookit api using "blyst6@si.edu" and "barbabaslyst"
     When I send POST request to "/api/students/student" endpoint with following information
       | first-name      | harold              |
       | last-name       | finch               |
-      | email           | harold10@gmail.com  |
-      | password        | abc123              |
+      | email           | blyst6@si.edu       |
+      | password        | barbabaslyst        |
       | role            | student-team-leader |
       | campus-location | VA                  |
       | batch-number    | 8                   |
@@ -19,7 +19,7 @@ Feature: Create student
   Scenario: test config
     Given I get env properties
 
-
+  @wip
   Scenario: Create student a teacher and verify status code 201
     Given I logged Bookit api as "teacher"
     When I send POST request to "/api/students/student" endpoint with following information

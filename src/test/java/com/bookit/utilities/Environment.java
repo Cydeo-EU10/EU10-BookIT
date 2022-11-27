@@ -29,6 +29,7 @@ public class Environment {
             try {
 
                 String path = System.getProperty("user.dir") + "/src/test/resources/Environments/" + environment + ".properties";
+                // C:\Users\Zulpikar\IdeaProjects\EU9-BookIT\src\test\resources\Environments\qa1.properties
 
                 FileInputStream input = new FileInputStream(path);
                 properties = new Properties();
