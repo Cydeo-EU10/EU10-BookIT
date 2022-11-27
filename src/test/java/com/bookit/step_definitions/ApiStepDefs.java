@@ -59,7 +59,7 @@ public class ApiStepDefs {
 
         //get information from database
         //connection is from hooks and it will be ready
-        String query = "select firstname,lastname,role from pg_user\n" +
+        String query = "select firstname,lastname,role from users\n" +
                 "where email = '"+emailGlobal+"'";
 
         Map<String,Object> dbMap = DBUtils.getRowMap(query);
