@@ -23,8 +23,10 @@ public class Environment {
 
     static {
 
-            String environment = System.getProperty("environment") != null ? environment = System.getProperty("environment") : ConfigurationReader.get("environment");
+            String environment = System.getProperty("environment") != null ? System.getProperty("environment")
+                    : ConfigurationReader.get("environment");
             //String environment = ConfigurationReader.get("environment");
+
 
             try {
 

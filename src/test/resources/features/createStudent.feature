@@ -6,7 +6,7 @@ Feature: Create student
     When I send POST request to "/api/students/student" endpoint with following information
       | first-name      | harold              |
       | last-name       | finch               |
-      | email           | blyst6@si.edu       |
+      | email           | ankara15@si.edu       |
       | password        | barbabaslyst        |
       | role            | student-team-leader |
       | campus-location | VA                  |
@@ -25,7 +25,7 @@ Feature: Create student
     When I send POST request to "/api/students/student" endpoint with following information
       | first-name      | harold              |
       | last-name       | finch               |
-      | email           | harold11@gmail.com  |
+      | email           | ankarali15@gmail.com  |
       | password        | abc123              |
       | role            | student-team-leader |
       | campus-location | VA                  |
